@@ -1,0 +1,23 @@
+
+.align-texte-center{
+    text-align: center;
+}
+.btn-home{
+    display: flex;
+    align-items: flex-end;
+}
+.heade{
+    background-color: rgb(23, 241, 248);
+    height: 100px;
+    color: darkgray;
+}
+
+.tabelas{
+    display: flex;
+}
+
+.formContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

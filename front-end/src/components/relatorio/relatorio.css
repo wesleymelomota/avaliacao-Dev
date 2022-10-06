@@ -1,0 +1,19 @@
+.flex-box{
+    margin: 0;
+    height: 100vh;
+}
+.text-center{
+    text-align: center;
+}
+.inputs{
+    display: flex;
+    margin: 2px;
+    justify-content: space-around;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
