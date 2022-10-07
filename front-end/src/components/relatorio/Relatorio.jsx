@@ -26,14 +26,16 @@ export default (props) => {
     const renderListRelatorio = (dado, data1, data2) => {
         return exames.filter((dado) => dado.data >= data1 && dado.data <= data2).map((dados) => {
             return (
-                <div>
-                    <ul>
-                        <li>Código: {dados.exame.codigo}</li>
-                        <li>Exame: {dados.exame.nomeExame}</li>
-                        <li>Funcionario: {dados.funcionario.nome}</li>
-                        <li>Código: {dados.funcionario.codigo}</li>
-                        <li>Data Exame: {dados.data}</li>
-                    </ul>
+                <div className='card-body'>
+                    <div className="card">
+                        <ul>
+                            <li>Código: {dados.exame.codigo}</li>
+                            <li>Exame: {dados.exame.nomeExame}</li>
+                            <li>Funcionario: {dados.funcionario.nome}</li>
+                            <li>Código: {dados.funcionario.codigo}</li>
+                            <li>Data Exame: {dados.data}</li>
+                        </ul>
+                    </div>
                 </div>
             )
         })

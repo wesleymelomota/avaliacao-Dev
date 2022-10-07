@@ -49,7 +49,7 @@ export default ({children}) => {
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <input class="form-control me-2" onChange={(e) => setCodigo(e.target.value)} type="search" placeholder="Pesquisar por codigo..." aria-label="Pesquise por codigo"/>
+                        <input class="form-control me-2" onChange={(e) => setCodigo(e.target.value)} type="search" placeholder="Pesquisar Consulta por codigo" aria-label="Pesquise por codigo"/>
                         <Link to="/user">
                             <button class="btn btn-outline-success" onClick={() => getConsulta()} type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                         </Link>

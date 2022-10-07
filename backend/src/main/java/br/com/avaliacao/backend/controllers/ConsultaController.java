@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.avaliacao.backend.entities.Consultas;
@@ -57,9 +58,13 @@ public class ConsultaController {
 	}
 	
 	@GetMapping("/obter/{codigo}")
-	public Optional<Consultas> obterConsultasPorCOdigo(@PathVariable Integer codigo) {
-		return repository.findById(codigo);			
-		
+	public @ResponseBody Consultas obterConsultasPorCOdigo(@PathVariable Integer codigo) {
+		if(repository.existsById(codigo)) {
+			return repository.findById(codigo).get();			
+		}else {
+			Consultas consulta = new Consultas();
+			return consulta;
+		}
 	}
 	
 	@PutMapping("/atualizar")

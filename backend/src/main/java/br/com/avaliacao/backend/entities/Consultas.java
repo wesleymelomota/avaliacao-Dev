@@ -91,15 +91,6 @@ public class Consultas {
 	}
 
 	
-
-	/*public List<Exame> getExame() {
-		return exame;
-	}
-
-	public void setExame(List<Exame> exame) {
-		this.exame = exame;
-	}*/
-
 	
 	
 }

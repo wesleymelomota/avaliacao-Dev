@@ -10,12 +10,18 @@
     border-radius: 5px;
     margin-top: 10px;
 }
+.btn-home{
+    display: flex;
+    align-items: flex-end;
+    margin-right: 3px;
+    float: right;
+}
 
 .heade{
-    height: 150px;
+    height: 130px;
     text-align: center;
     background-color: rgb(23, 241, 248);
-    color: darkgray;
+    color: white;
 }
 
 .formContent{

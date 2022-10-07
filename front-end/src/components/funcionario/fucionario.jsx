@@ -1,27 +1,17 @@
 import { useState, useEffect } from 'react'
 import Button from '../uteis/Button'
-// import './usuario.css'
 import "./funcionario.css"
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPencil, faTrash, faPlus } from "@fortawesome/free-solid-svg-icons"
-import { Link } from 'react-router-dom'
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons"
+
 
 export default() => {
     
-    //const dispatch = useDispatch()
-    
     //states que armazena os objetos vindo do backend e os dados do formulario
     const [funcionario, setFuncionario] = useState({codigo: '', nome: ''})
-    //const [Chekfuncionario, setChek] = useState({codigo: '', nome: ''})
-
-    const [exame, setExame] = useState({funcionario: {nome: "", codigo: ""}, 
-    codigo: "", nomeExame: "", data: ""} )
-   
-
     const [listFuncionario, setList] = useState([])
-    const [cadastrar, setCad] = useState(true)
-
+    
     //fazendo requesição no back-end e inserindo os dados no listFuncionario criando uma lista de objs
     useEffect(() => {
         axios.get("http://localhost:8080/funcionario/obterFuncionarios", {headers: {
@@ -41,28 +31,10 @@ export default() => {
         nome: ''   
     }
 
-    const initialStateExame = {
-        codigo: "",
-        nomeExame: "",
-        funcionario: {
-            codigo: "",
-            nome: ""
-        },
-        data: ""        
-    }
-    
-
     const getValueField = (e) => {
         const usuario = {...funcionario}
         usuario[e.target.name] = e.target.value
         setFuncionario(usuario)
-        
-    }
-
-    const getValueFieldAddExame = (e) => {
-        const Exame = {...exame}
-        Exame[e.target.name] = e.target.value
-        setExame(Exame)
         
     }
 
@@ -91,43 +63,6 @@ export default() => {
         )
     }
 
-    const renderFormAddExame = () => {
-        return(
-            <div className="formulario form-group row mb-3">
-                <div className="mb-3">
-                    <label className="form-label">Código:</label>
-                    <input className='form-control' value={exame.codigo}  
-                    onChange="{(e) => getValueField(e)}" type="number" name="codigo"/>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Nome exame:</label>
-                    <input className="form-control" type="text" value={exame.nomeExame} 
-                    onChange={(e) => getValueFieldAddExame(e)} name="nomeExame" placeholder='exame...'/>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Nome Funcionario:</label>
-                    <input className="form-control" type="text" value={exame.funcionario.nome} 
-                    onChange={(e) => getValueFieldAddExame(e)} name="funcionario" placeholder='funcionario...'/>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Código Funcionario:</label>
-                    <input className='form-control' value={exame.funcionario.codigo}  
-                    onChange={(e) => getValueField(e)} type="number" name="funcionario"/>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Data Exame:</label>
-                    <input className="form-control" type="date" value={exame.data} 
-                    onChange={(e) => getValueFieldAddExame(e)} name="data" placeholder='dd/mm/aa'/>
-                </div>
-                <div className="btns">
-                    <button type="button" className="btn btn-success" onClick={() => enviar(exame)}>Salvar</button>
-                    <button type="button" className="btn btn-secondary" onClick={() => limpar()}>Cancelar</button>
-                </div>
-            </div>
-        )
-    }
-
-
     //função de renderizar a tabela 
     const renderTable = () => {
         return(
@@ -138,10 +73,6 @@ export default() => {
                     <th>Nome</th>
                     <th>Ações</th>
                     <th>
-
-                        <a href="/">
-                            <Button  cor="grey">Home</Button>
-                        </a>
                     </th>
                 </tr>
                 </thead>
@@ -201,22 +132,10 @@ export default() => {
         alert(data)
     }
 
-    const limpar = () => {
-        setExame(initialStateExame)
-    }
-
-
     //função que exclui um usuario pelo id 
     const excluir = async (dado) => {
         const {data} = await axios.delete(`http://localhost:8080/funcionario/excluir/${dado.codigo}`)
         alert(data)
-    }
-
-    const Addexame = (funcionario) => {
-        setCad(false)
-        initialStateExame.funcionario.codigo = funcionario.codigo
-        initialStateExame.funcionario.nome = funcionario.nome
-        setExame(initialStateExame)
     }
 
     //essa função pega os dados da tabela e renderiza no formulario
@@ -229,14 +148,19 @@ export default() => {
     return(
         <div className="funcionario">
             <div>
-                <h1 className="heade">Tabela de Usuarios</h1>
+                <h1 className="heade">Cadastro de Usuarios</h1>
+                <div className="btn-home">
+                    <a href="/">
+                        <Button  cor="grey">Home</Button>
+                    </a>
+                </div>
             </div>
-                {renderTable()}
                 <div className='formContent'>
                 {
-                 renderForm()
+                    renderForm()
                 }
                 </div>
+                {renderTable()}
             
         </div>
     )

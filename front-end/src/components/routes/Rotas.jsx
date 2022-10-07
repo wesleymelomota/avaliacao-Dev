@@ -3,8 +3,8 @@ import {Route, Redirect, Switch} from 'react-router-dom'
 
 import Form from '../formulario/Form'
 import Index from '../index/Index'
-import Funcionario from '../usuarios/fucionario'
-import User from '../usuarios/user/User'
+import Funcionario from '../funcionario/fucionario'
+
 import Consulta from '../exame/Consulta'
 import Relatorio from '../relatorio/Relatorio'
 import ExameCrud from '../exame/ExameCrud'

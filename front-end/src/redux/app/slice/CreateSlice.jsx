@@ -20,6 +20,7 @@ export const CreateSlice = createSlice({
     },
     reducers: {
         getCodigo(state, {payload}) {
+            if(payload == null)return false
             return {...state, consulta: payload}
         },
 

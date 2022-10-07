@@ -57,7 +57,10 @@ public class FuncionarioControlle {
 	@CrossOrigin
 	@PutMapping("/atualizar/{codigo}")
 	public String atualizarFuncionario(@RequestBody Funcionario funcionario) {
+		Consultas consulta = ConsultaRepo.findByFuncionarioCodigo(funcionario.getCodigo());
+		consulta.setFuncionario(funcionario);
 		repository.save(funcionario);
+		ConsultaRepo.save(consulta);
 		return "Funcionario " + funcionario.getNome() + " Atualizar";
 	}
 	
